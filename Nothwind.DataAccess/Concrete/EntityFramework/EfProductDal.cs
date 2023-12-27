@@ -1,13 +1,14 @@
-﻿using Nothwind.Entities.Concrete;
+﻿using Nothwind.DataAccess.Abstract;
+using Nothwind.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nothwind.DataAccess.Concrete
+namespace Nothwind.DataAccess.Concrete.EntityFramework
 {
-    public class ProductDal
+    public class EfProductDal : IProductDal
     {
         public List<Product> GetAll()
         {
