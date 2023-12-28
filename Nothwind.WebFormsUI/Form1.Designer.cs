@@ -30,11 +30,12 @@
         {
             this.dgwProduct = new System.Windows.Forms.DataGridView();
             this.gbxCategory = new System.Windows.Forms.GroupBox();
-            this.gbxProductName = new System.Windows.Forms.GroupBox();
+            this.cbxCategory = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
+            this.gbxProductName = new System.Windows.Forms.GroupBox();
             this.tbxProductName = new System.Windows.Forms.TextBox();
             this.lblProductName = new System.Windows.Forms.Label();
-            this.cbxCategory = new System.Windows.Forms.ComboBox();
+            this.btnClearCategoryFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwProduct)).BeginInit();
             this.gbxCategory.SuspendLayout();
             this.gbxProductName.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             // gbxCategory
             // 
+            this.gbxCategory.Controls.Add(this.btnClearCategoryFilter);
             this.gbxCategory.Controls.Add(this.cbxCategory);
             this.gbxCategory.Controls.Add(this.lblCategory);
             this.gbxCategory.Location = new System.Drawing.Point(12, 12);
@@ -58,6 +60,24 @@
             this.gbxCategory.TabIndex = 1;
             this.gbxCategory.TabStop = false;
             this.gbxCategory.Text = "Kategoriye Göre Ara";
+            // 
+            // cbxCategory
+            // 
+            this.cbxCategory.FormattingEnabled = true;
+            this.cbxCategory.Location = new System.Drawing.Point(60, 29);
+            this.cbxCategory.Name = "cbxCategory";
+            this.cbxCategory.Size = new System.Drawing.Size(156, 21);
+            this.cbxCategory.TabIndex = 1;
+            this.cbxCategory.SelectedIndexChanged += new System.EventHandler(this.cbxCategory_SelectedIndexChanged);
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(6, 32);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(46, 13);
+            this.lblCategory.TabIndex = 0;
+            this.lblCategory.Text = "Kategori";
             // 
             // gbxProductName
             // 
@@ -69,15 +89,6 @@
             this.gbxProductName.TabIndex = 2;
             this.gbxProductName.TabStop = false;
             this.gbxProductName.Text = "Ürün Adına Göre Ara";
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(6, 32);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(46, 13);
-            this.lblCategory.TabIndex = 0;
-            this.lblCategory.Text = "Kategori";
             // 
             // tbxProductName
             // 
@@ -95,13 +106,15 @@
             this.lblProductName.TabIndex = 2;
             this.lblProductName.Text = "Ürün Adı";
             // 
-            // cbxCategory
+            // btnClearCategoryFilter
             // 
-            this.cbxCategory.FormattingEnabled = true;
-            this.cbxCategory.Location = new System.Drawing.Point(60, 29);
-            this.cbxCategory.Name = "cbxCategory";
-            this.cbxCategory.Size = new System.Drawing.Size(156, 21);
-            this.cbxCategory.TabIndex = 1;
+            this.btnClearCategoryFilter.Location = new System.Drawing.Point(222, 28);
+            this.btnClearCategoryFilter.Name = "btnClearCategoryFilter";
+            this.btnClearCategoryFilter.Size = new System.Drawing.Size(23, 23);
+            this.btnClearCategoryFilter.TabIndex = 2;
+            this.btnClearCategoryFilter.Text = "X";
+            this.btnClearCategoryFilter.UseVisualStyleBackColor = true;
+            this.btnClearCategoryFilter.Click += new System.EventHandler(this.btnClearCategoryFilter_Click);
             // 
             // Form1
             // 
@@ -132,6 +145,7 @@
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.TextBox tbxProductName;
         private System.Windows.Forms.Label lblProductName;
+        private System.Windows.Forms.Button btnClearCategoryFilter;
     }
 }
 
