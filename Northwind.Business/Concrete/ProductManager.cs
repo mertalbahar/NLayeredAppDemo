@@ -1,4 +1,6 @@
 ﻿using Northwind.Business.Abstract;
+using Northwind.Business.Utilities;
+using Northwind.Business.ValidationRules.FluentValidation;
 using Nothwind.DataAccess.Abstract;
 using Nothwind.Entities.Concrete;
 using System;
@@ -18,23 +20,6 @@ namespace Northwind.Business.Concrete
             _productDal = productDal;
         }
 
-        public void Add(Product product)
-        {
-            _productDal.Add(product);
-        }
-
-        public void Delete(Product product)
-        {
-            try
-            {
-                _productDal.Delete(product);
-            }
-            catch
-            {
-                throw new Exception("Silme işlemi sırasında bir hata meydana geldi.");
-            }
-        }
-
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
@@ -50,9 +35,28 @@ namespace Northwind.Business.Concrete
             return _productDal.GetAll(p => p.ProductName.ToLower().Contains(productName.ToLower()));
         }
 
+        public void Add(Product product)
+        {
+            ValidationTool.Validate(new ProductValidator(), product);
+            _productDal.Add(product);
+        }
+
         public void Update(Product product)
         {
+            ValidationTool.Validate(new ProductValidator(), product);
             _productDal.Update(product);
+        }
+
+        public void Delete(Product product)
+        {
+            try
+            {
+                _productDal.Delete(product);
+            }
+            catch
+            {
+                throw new Exception("Silme işlemi sırasında bir hata meydana geldi.");
+            }
         }
     }
 }

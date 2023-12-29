@@ -82,32 +82,48 @@ namespace Nothwind.WebFormsUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            _productService.Add(new Product
+            try
             {
-                CategoryId = Convert.ToInt32(cbxCategoryIdAdd.SelectedValue),
-                ProductName = tbxProductNameAdd.Text,
-                QuantityPerUnit = tbxQuantityPerUnitAdd.Text,
-                UnitPrice = Convert.ToDecimal(tbxUnitPriceAdd.Text),
-                UnitsInStock = Convert.ToInt16(tbxUnitsInStockAdd.Text)
-            });
-            MessageBox.Show("Ürün eklendi.");
-            LoadProducts();
+                _productService.Add(new Product
+                {
+                    CategoryId = Convert.ToInt32(cbxCategoryIdAdd.SelectedValue),
+                    ProductName = tbxProductNameAdd.Text,
+                    QuantityPerUnit = tbxQuantityPerUnitAdd.Text,
+                    UnitPrice = Convert.ToDecimal(tbxUnitPriceAdd.Text),
+                    UnitsInStock = Convert.ToInt16(tbxUnitsInStockAdd.Text)
+                });
+                MessageBox.Show("Ürün eklendi.");
+                LoadProducts();
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _productService.Update(new Product
+            try
             {
-                ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value),
-                CategoryId = Convert.ToInt32(cbxCategoryIdUpdate.SelectedValue),
-                ProductName = tbxProductNameUpdate.Text,
-                QuantityPerUnit = tbxQuantityPerUnitUpdate.Text,
-                UnitPrice = Convert.ToDecimal(tbxUnitPriceUpdate.Text),
-                UnitsInStock = Convert.ToInt16(tbxUnitsInStockUpdate.Text)
+                _productService.Update(new Product
+                {
+                    ProductId = Convert.ToInt32(dgwProduct.CurrentRow.Cells[0].Value),
+                    CategoryId = Convert.ToInt32(cbxCategoryIdUpdate.SelectedValue),
+                    ProductName = tbxProductNameUpdate.Text,
+                    QuantityPerUnit = tbxQuantityPerUnitUpdate.Text,
+                    UnitPrice = Convert.ToDecimal(tbxUnitPriceUpdate.Text),
+                    UnitsInStock = Convert.ToInt16(tbxUnitsInStockUpdate.Text)
 
-            });
-            MessageBox.Show("Ürün güncellendi.");
-            LoadProducts();
+                });
+                MessageBox.Show("Ürün güncellendi.");
+                LoadProducts();
+            }
+            catch (Exception exception)
+            {
+
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void dgwProduct_CellClick(object sender, DataGridViewCellEventArgs e)
