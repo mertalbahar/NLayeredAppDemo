@@ -23,6 +23,18 @@ namespace Northwind.Business.Concrete
             _productDal.Add(product);
         }
 
+        public void Delete(Product product)
+        {
+            try
+            {
+                _productDal.Delete(product);
+            }
+            catch
+            {
+                throw new Exception("Silme işlemi sırasında bir hata meydana geldi.");
+            }
+        }
+
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
